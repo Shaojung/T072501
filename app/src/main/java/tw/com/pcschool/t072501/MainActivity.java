@@ -31,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        builder.setNeutralButton("忽略", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
         builder.create().show();
     }
 }
