@@ -6,9 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    int w = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +77,11 @@ public class MainActivity extends AppCompatActivity {
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("單選項對話框");
-        String[] fruits = {"蘋果", "芭樂", "檸檬"};
-        builder.setSingleChoiceItems(fruits, -1, new DialogInterface.OnClickListener() {
+        final String[] fruits = {"蘋果", "芭樂", "檸檬"};
+        builder.setSingleChoiceItems(fruits, w, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        w=which;
                     }
                 });
 
@@ -86,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                TextView tv = (TextView) findViewById(R.id.textView);
+                tv.setText(fruits[w]);
                 // Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
             }
         });
