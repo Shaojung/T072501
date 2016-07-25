@@ -79,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle("單選項對話框");
         final String[] fruits = {"蘋果", "芭樂", "檸檬"};
         builder.setSingleChoiceItems(fruits, w, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        w=which;
-                    }
-                });
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                w=which;
+            }
+        });
 
 
         builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
@@ -91,6 +91,36 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 TextView tv = (TextView) findViewById(R.id.textView);
                 tv.setText(fruits[w]);
+                // Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.create().show();
+    }
+
+    public void click4(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("多選項對話框");
+        final String[] sweets = {"花生", "紅豆", "綠豆"};
+        boolean b[] = new boolean[3];
+        builder.setMultiChoiceItems(sweets, b, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+            }
+        });
+
+
+        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                TextView tv = (TextView) findViewById(R.id.textView);
+                // tv.setText(fruits[w]);
                 // Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
             }
         });
