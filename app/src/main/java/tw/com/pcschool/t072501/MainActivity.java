@@ -70,4 +70,31 @@ public class MainActivity extends AppCompatActivity {
 
         builder.create().show();
     }
+    public void click3(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("單選項對話框");
+        String[] fruits = {"蘋果", "芭樂", "檸檬"};
+        builder.setSingleChoiceItems(fruits, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+
+        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                // Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.create().show();
+    }
 }
