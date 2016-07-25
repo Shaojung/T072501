@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     int w = -1;
-
+    boolean b[] = new boolean[3];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,11 +107,11 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("多選項對話框");
         final String[] sweets = {"花生", "紅豆", "綠豆"};
-        boolean b[] = new boolean[3];
+
         builder.setMultiChoiceItems(sweets, b, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-
+                b[which] = isChecked;
             }
         });
 
@@ -120,7 +120,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 TextView tv = (TextView) findViewById(R.id.textView);
-                // tv.setText(fruits[w]);
+                String str = "";
+                for (int i=0;i<=2;i++)
+                {
+                    if (b[i])
+                    {
+                        str = str + sweets[i];
+                    }
+                }
+                tv.setText(str);
                 // Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
             }
         });
