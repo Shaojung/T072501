@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -171,6 +172,17 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         View dv = inflater.inflate(R.layout.dialog_view, (ViewGroup) findViewById(R.id.root));
         builder.setView(dv);
+
+        Button btn = (Button) dv.findViewById(R.id.button7);
+        final TextView tv2 = (TextView) dv.findViewById(R.id.textView2);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int r = (int)(Math.random() * 100);
+                String s = String.valueOf(r);
+                tv2.setText(s);
+            }
+        });
 
         builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
