@@ -1,5 +1,6 @@
 package tw.com.pcschool.t072501;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -195,5 +196,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         builder.create().show();
+    }
+
+    public void click7(View v)
+    {
+        final ProgressDialog pd = new ProgressDialog(MainActivity.this);
+        pd.setTitle("請稍後");
+        pd.setMessage("請稍後視窗....");
+        pd.show();
+
+        new Thread(){public void run(){
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            pd.dismiss();
+        }}.start();
+
     }
 }
