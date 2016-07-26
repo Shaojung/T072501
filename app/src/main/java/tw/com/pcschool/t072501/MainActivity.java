@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setMultiChoiceItems(sweets, b, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                b[which] = isChecked;
+                // b[which] = isChecked;
             }
         });
 
@@ -132,6 +132,27 @@ public class MainActivity extends AppCompatActivity {
                 // Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
             }
         });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.create().show();
+    }
+
+    public void click5(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("列表型對話框");
+        final String[] sweets = {"花生", "紅豆", "綠豆"};
+        builder.setItems(sweets, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                TextView tv = (TextView) findViewById(R.id.textView);
+                tv.setText(sweets[which]);
+            }
+        });
+
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
